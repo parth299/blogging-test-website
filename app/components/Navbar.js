@@ -1,0 +1,81 @@
+'use client'
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import twitter from '../../public/images/twitter.png'
+import github from '../../public/images/github.png'
+import { usePathname } from 'next/navigation'
+
+const Navbar = () => {
+
+  //Using the pathname to highlight on which route or navigation path we are currently at like pathname = '/' if we are on home screen.
+  const pathname = usePathname();
+
+  return (
+
+    // OuterMost div
+    <div className="lg:flex justify-center bg-zinc-900 sticky shadow-2xl">
+
+
+
+        {/* Main Navbar Section */}
+        <nav className="text-[#9096A1]  flex justify-between w-full lg:w-11/12 items-center">
+
+
+
+          {/* Navbar Spit 1 */}
+          <div className="center ">
+            <ul className="flex w-1/3 justify-between text-sm">
+              <h1 className="p-4 text-[#e4e2e2] font-black">CodeBlogz</h1>
+              <Link className="hidden lg:block" href="/"><li className={`p-4 ${pathname==='/'?"text-white" : " "}`}>Home</li></Link>
+              <Link className="hidden lg:block" href="/about"><li className={`p-4 ${pathname==='/about'?"text-white" : " "}`}>About</li></Link>
+              <Link href="/blogpost/blog"><li className={`p-4 ${pathname==='/blogpost/blog'?"text-white" : " "}`}>Blogs</li></Link>
+              <Link className="hidden lg:block" href="https://parth299.github.io/My-Portfolio/" target='_blank'><li className="p-4">Portfolio</li></Link>
+              <Link className="hidden lg:block" href="/login"><li className={`p-4 ${pathname==='/login'?"text-white" : " "}`}>Login</li></Link>
+            </ul>
+          </div>
+          {/* Navbar section 1 ENDS */}
+
+
+          {/* Navbar spit 2 */}
+          <div className="right flex items-center  justify-center ">
+
+            {/* This nav section contains the search bar and the social media handles */}
+            <div className="hidden md:block p-4">
+              <input className=" rounded-md bg-zinc-800 placeholder:text-[0.8rem] placeholder:p-2" type="search" placeholder="Search Blogs..." name="Search" id="" />
+            </div>
+            
+            <div className="p-4">
+              <Link className="hover:cursor-pointer" href="https://twitter.com/parthKodes"><Image
+              src={twitter}
+              width={18}
+              height={18}
+              className="invert"
+              alt="Loading Twitter"
+              />
+              </Link>
+
+            </div>
+            <div className="p-4">
+              <Link className="hover:cursor-pointer" href="https://github.com/parth299?tab=repositories"><Image
+              src={github}
+              width={22}
+              height={22}
+              className="invert"
+              alt='Loading Github'
+            /></Link>
+            </div>
+          </div>
+          {/* Navbar Section 2 ENDS */}
+
+      </nav>
+      {/* Navbar ENDs */}
+
+
+
+    </div>
+    // OuterMost div Ends
+  )
+}
+
+export default Navbar
