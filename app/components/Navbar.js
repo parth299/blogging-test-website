@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
 
     // OuterMost div
-    <div className="lg:flex justify-center bg-zinc-900 sticky shadow-2xl">
+    <div className="lg:flex justify-center bg-zinc-900 sticky shadow-2xl z-50">
 
 
 

@@ -23,10 +23,10 @@ export default function Home() {
   ]
 
   return (
-    <main className="bg-black w-screen h-screen p-5 lg:p-36">
+    <main className="bg-black w-screen bg-gradient-to-r from-black to-zinc-900 p-5 lg:p-36">
         
       {/* Text Element */}
-      <div className="text bg-gradient-to-r text-center text-6xl lg:text-7xl from-gray-600 to-gray-900 bg-clip-text text-transparent px-10 py-6">
+      <div className="text text-center text-6xl  text-white/60 hover:cursor-default px-10 py-6 lg:text-7xl">
         Explore the World Through Code.
         CodeBlogz.
       </div>
@@ -34,16 +34,20 @@ export default function Home() {
 
       {/* Our Latest Blogs */}
       <div className="Latest-Blogs text-[#DCDAD4] px-10 mt-10">
-        <h1 className="text-xl">Read Our Latest Blogs</h1>
-        <div className="contanier flex space-x-8 mt-5">
+        <h1 className="text-xl hover:cursor-default">Read Our Latest Blogs</h1>
+        <div className="contanier md:flex md:space-x-8 mt-5">
           {latestBlogs.map((blog) => (
-            <div className="" key={blog.title}>
+            <div className="hover:cursor-default" key={blog.title}>
               <BlogCard title={blog.title} content={blog.content} />
             </div>
           ))}
         </div>
       </div>
       {/* Latest Blogs ENDs */}
+
+      <footer>
+        
+      </footer>
 
     </main>
   );
