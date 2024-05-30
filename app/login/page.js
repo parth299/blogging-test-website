@@ -14,6 +14,7 @@ function route() {
     e.preventDefault();
     
     const response = await axios.post('/api/auth/login', {email, password});
+    console.log(response);
     router.replace('/dashboard');
     const token = response.data.token;
     localStorage.setItem('token', token);
