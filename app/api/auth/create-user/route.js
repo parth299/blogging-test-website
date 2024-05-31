@@ -11,10 +11,13 @@ export async function POST(request) {
         const {username, email, password} = await request.json();
 
         const hashedPassword = await bcrypt.hash(password, 10);
+        //Create the verify code
+        const verifyCode = String(Math.floor(Math.random()*900000 + 100000));
         const newUser = new User({
             username,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            verifyCode
         });
 
         if(!newUser) {
@@ -23,8 +26,6 @@ export async function POST(request) {
             }, {status: 500});
         }
 
-        //Create the verify code
-        const verifyCode = Math.floor(Math.random()*900000 + 100000);
 
         await newUser.save();
         

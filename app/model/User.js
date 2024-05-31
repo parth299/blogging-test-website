@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: [true, "Username is required"]
+        required: [true, "Username is required"],
+        unique: true
     },
     email: {
         type: String,
@@ -22,6 +23,9 @@ const userSchema = new mongoose.Schema({
             createdAt: {type: Date, required: true, default: Date.now}
         }
     ],
+    verifyCode: {
+        type: String
+    },
     isVerified: {
         type: Boolean,
         required: true,
