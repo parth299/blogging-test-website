@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { dbConnect } from "@/app/lib/dbConnect";
 import User from "@/app/model/User";
 import bcrypt from 'bcryptjs'
+import { sendVerificationEmail } from "@/app/helpers/sendVerification";
 
 dbConnect();
 
@@ -16,7 +17,24 @@ export async function POST(request) {
             password: hashedPassword
         });
 
-        newUser.save();
+        if(!newUser) {
+            return NextResponse.json({
+                message: "Cannot create user"
+            }, {status: 500});
+        }
+
+        //Create the verify code
+        const verifyCode = Math.floor(Math.random()*900000 + 100000);
+
+        await newUser.save();
+        
+        const data = {
+            username,
+            email,
+            verifyCode
+        }
+        const response = await sendVerificationEmail(data);
+        console.log(response);
 
         return NextResponse.json({
             message: "User created Successfully",
@@ -24,7 +42,7 @@ export async function POST(request) {
         },{status: 200});
 
     } catch (error) {
-        console.log("some error occured");
+        console.log("some error occured :: ", error);
         return NextResponse.json({
             message: "Cannot create user"
         }, {status: 500});

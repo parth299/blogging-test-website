@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/font": "^14.1.0",
+    "@react-email/components": "^0.0.19",
     "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^9.0.2",
@@ -19,6 +19,7 @@
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
     "regenerate-unicode-properties": "^10.1.1",
+    "resend": "^3.2.0",
     "styled-jsx": "^5.1.6"
   },
   "devDependencies": {

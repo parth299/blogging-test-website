@@ -45,10 +45,6 @@ export default function Home() {
       </div>
       {/* Latest Blogs ENDs */}
 
-      <footer>
-        
-      </footer>
-
     </main>
   );
 }

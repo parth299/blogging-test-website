@@ -16,7 +16,7 @@ function route() {
     
     await axios.post('/api/auth/create-user', {username, email, password})
     .then((res) => {
-      router.replace('/login')
+      router.replace('/verify/:userid')
       console.log(res)
     })
     .catch((err) => console.log(err));

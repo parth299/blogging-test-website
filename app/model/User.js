@@ -22,6 +22,11 @@ const userSchema = new mongoose.Schema({
             createdAt: {type: Date, required: true, default: Date.now}
         }
     ],
+    isVerified: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     token: String,
     tokenExpiry: Date
 });
