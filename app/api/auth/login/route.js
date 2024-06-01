@@ -20,6 +20,7 @@ export async function POST(request) {
 
         //User exists in db, check the password
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        const username = user.username;
 
         if(isPasswordCorrect) {
             //Login success
@@ -36,7 +37,8 @@ export async function POST(request) {
             return NextResponse.json({
                 success: true,
                 message: "User logged in succesfully",
-                token
+                token,
+                username 
             }, {status: 200})
         }
         else {
