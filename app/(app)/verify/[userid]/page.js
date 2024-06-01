@@ -15,7 +15,7 @@ function page() {
     try {
       const response = await axios.post('/api/auth/verify-user', {userid, otp});
       console.log(response);
-
+      router.replace('/login')
     } catch (error) {
       console.log("Cannot send the verify user request! :: ",error )
     }
@@ -23,8 +23,8 @@ function page() {
 
   return (
     <main className='absolute min-h-screen bg-black/55 w-screen flex justify-center items-center top-0'>
-      <div className="form w-[40%] bg-white/30 text-white rounded-xl text-center p-8">
-        <h1 className='text-center text-black text-5xl font-extrabold my-4 '>VERIFY OTP</h1>
+      <div className="form lg:w-[40%] w-[80%] bg-white/30 text-white rounded-xl text-center p-8">
+        <h1 className='text-center text-black text-6xl lg:text-5xl font-extrabold my-4 '>VERIFY OTP</h1>
         
           <h2 className='text-center text-xl my-6 font-bold text-black/70'>Please enter a verification code which has been sent to you through email</h2>
           <div className='flex justify-center items-center'>

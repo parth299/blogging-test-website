@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Link from 'next/link';
 
 function route() {
 
@@ -22,9 +23,9 @@ function route() {
   }
 
   return (
-    <div className='min-h-screen flex justify-center items-center bg-black text-white'>
-      <div className="main">
-         <h1 className='text-center text-6xl my-2'>CodeBlogz Login</h1>
+    <div className='min-h-screen absolute top-0 w-screen flex justify-center items-center bg-black text-white/35 bg-gradient-to-tr from-black to-zinc-900'>
+      <div className="main mx-6 bg-gradient-to-r from-white/10 to-zinc-900 rounded-lg px-5 py-5 lg:py-10">
+         <h1 className='text-center text-6xl lg:py-5 text-white/65 lg:text-6xl my-2 hover:cursor-default'>CodeBlogz Login</h1>
          <form action="">
             
 
@@ -35,7 +36,7 @@ function route() {
                value={email}
                placeholder='Enter email' 
                onChange={(e) => setEmail(e.target.value)}
-               className='p-2 rounded-md text-black'
+               className='p-2 rounded-md text-black placeholder:text-black/50 bg-white/70'
             /></div>
             
             <div className='my-6 text-center'><label htmlFor="password" className='mx-8'>Password: </label>
@@ -45,10 +46,14 @@ function route() {
                value={password}
                placeholder='Enter password' 
                onChange={(e) => setPassword(e.target.value)}
-               className='p-2 rounded-md text-black'
+               className='p-2 rounded-md text-black bg-white/70 placeholder:text-black/50'
             /></div>
 
-            <div className='text-center'><button onClick={handleSubmit} className='bg-zinc-800 rounded-md p-2'>Submit</button></div>
+            <div className='text-center'><button onClick={handleSubmit} className='bg-zinc-800 text-white/60 rounded-md p-2'>Submit</button></div>
+
+            <div className="askForSignUp text-white/55 text-sm text-center my-4">
+              Not a Member? <Link className='underline text-white/75' href='/signup'>Sign up</Link>
+            </div>
             
             
          </form>

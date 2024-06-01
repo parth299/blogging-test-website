@@ -25,8 +25,14 @@ export async function POST(request) {
             //Login success
             console.log("User is logged in successfully")
             const token = jwt.sign({username: user.username, email: user.email}, process.env.JWT_SECRET, {
-                expiresIn: '8h'
+                expiresIn: '1h'
             })
+            user.token = token;
+            const date = new Date();
+            user.tokenExpiry = date.getTime() + 3600000
+            // console.log(tokenExpiry)
+
+            await user.save();
             return NextResponse.json({
                 success: true,
                 message: "User logged in succesfully",

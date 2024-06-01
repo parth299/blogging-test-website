@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Link from 'next/link';
 
 function route() {
 
@@ -23,9 +24,9 @@ function route() {
   }
 
   return (
-    <div className='min-h-screen flex justify-center items-center bg-black text-white'>
-      <div className="main">
-         <h1 className='text-center text-6xl my-2'>CodeBlogz SignUp</h1>
+    <div className='min-h-screen absolute top-0 flex justify-center items-center bg-black text-white/35 w-screen'>
+      <div className="main bg-gradient-to-r from-white/10 to-zinc-900 mx-6 px-3 py-5 rounded-lg lg:px-8 lg:py-8">
+         <h1 className='text-center text-6xl my-2 py-3 text-white/55'>CodeBlogz SignUp</h1>
          <form action="">
           <div className='my-5 text-center'><label className='mx-8' htmlFor="username">Username: </label>
             <input
@@ -34,7 +35,7 @@ function route() {
                value={username}
                placeholder='Enter username' 
                onChange={(e) => setUsername(e.target.value)}
-               className='p-2 rounded-md text-black'
+               className='p-2 rounded-md placeholder:text-black/60 text-black bg-white/70'
             /></div>
 
             <div className='my-5 text-center'><label className='mx-12' htmlFor="email">Email: </label>
@@ -44,7 +45,7 @@ function route() {
                value={email}
                placeholder='Enter email' 
                onChange={(e) => setEmail(e.target.value)}
-               className='p-2 rounded-md text-black'
+               className='p-2 rounded-md placeholder:text-black/60 text-black bg-white/70'
             /></div>
             
             <div className='my-6 text-center'><label htmlFor="password" className='mx-8'>Password: </label>
@@ -54,11 +55,14 @@ function route() {
                value={password}
                placeholder='Enter password' 
                onChange={(e) => setPassword(e.target.value)}
-               className='p-2 rounded-md text-black'
+               className='p-2 rounded-md placeholder:text-black/60 text-black bg-white/70'
             /></div>
 
-            <div className='text-center'><button onClick={handleSubmit} className='bg-zinc-800 rounded-md p-2'>Submit</button></div>
+            <div className='text-center'><button onClick={handleSubmit} className='bg-zinc-800 text-white/60 rounded-md p-2'>Submit</button></div>
             
+            <div className="askForLogin text-center my-4">
+              Already a User? <Link className="underline text-white/60" href='/login'>Login</Link>
+            </div>
             
          </form>
       </div>

@@ -10,7 +10,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Email is required"],
         unique: true,
-        match: [/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "Please enter a valid email"]
     },
     password: {
         type: String,
@@ -32,7 +31,7 @@ const userSchema = new mongoose.Schema({
         default: false
     },
     token: String,
-    tokenExpiry: Date
+    tokenExpiry: String
 });
 
 const User = mongoose.models.User || mongoose.model('User', userSchema);

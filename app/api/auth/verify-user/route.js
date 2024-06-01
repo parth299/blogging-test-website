@@ -28,6 +28,7 @@ export async function POST(request) {
             success: true,
             message: "User verified successfully"
         }, {status: 200})
+        
     } catch (error) {
         return Response.json({
             success: false,

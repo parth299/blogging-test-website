@@ -26,8 +26,8 @@ const Navbar = () => {
           {/* Navbar Spit 1 */}
           <div className="center ">
             <ul className="flex w-1/3 justify-between text-sm">
-              <h1 className="p-4 text-[#e4e2e2] font-black">CodeBlogz</h1>
-              <Link className="hidden lg:block" href="/"><li className={`p-4 ${pathname==='/'?"text-white" : " "}`}>Home</li></Link>
+              {/* <h1 className="p-4 text-[#e4e2e2] font-black">CodeBlogz</h1> */}
+              <Link className="text-white/70 lg:block" href="/"><li className={`p-4 ${pathname==='/'?"text-white" : " "}`}>CodeBlogz</li></Link>
               <Link className="hidden lg:block" href="/about"><li className={`p-4 ${pathname==='/about'?"text-white" : " "}`}>About</li></Link>
               <Link href="/blogpost/blog"><li className={`p-4 ${pathname==='/blogpost/blog'?"text-white" : " "}`}>Blogs</li></Link>
               <Link className="hidden lg:block" href="https://parth299.github.io/My-Portfolio/" target='_blank'><li className="p-4">Portfolio</li></Link>
@@ -46,7 +46,8 @@ const Navbar = () => {
             </div>
             
             <div className="p-4">
-              <Link className="hover:cursor-pointer" href="https://twitter.com/parthKodes"><Image
+              <Link href='/login' className={`lg:hidden ${pathname==='/login'?"text-white" : " "}`}>Login</Link>
+              <Link className="hover:cursor-pointer hidden lg:block" href="https://twitter.com/parthKodes"><Image
               src={twitter}
               width={18}
               height={18}
