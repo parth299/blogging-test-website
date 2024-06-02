@@ -9,7 +9,7 @@ const page = () => {
   const [content, setContent] = useState(""); 
   const {verifyCode, username} = useParams();
   const [blogs, setBlogs] = useState([]);
-  const [isAddingBlog, setIdAddingBlog] = useState(false);
+  const [isAddingBlog, setIdAddingBlog] = useState(true);
 
   const handleAddingBlog = async() => {
     setIdAddingBlog((prev) => !prev)
@@ -49,12 +49,15 @@ const page = () => {
           </button>
         </div>
 
-        <div className="blogs text-white">
+        <div className="blogs text-white/70 my-8">
+          {blogs.length > 0 ? (
+            <h1 className='text-3xl'>Your blogs</h1>
+          ) : null}
           {blogs.length > 0 ? 
             (
               blogs.map((blog) => (
-                <div className='my-3' key={blog.createdAt}>
-                  <BlogCard title={blog.title} content={blog.content} />
+                <div className='lg:my-3' key={blog.createdAt}>
+                  <BlogCard blogid={blog._id} title={blog.title} content={blog.content} />
                 </div>
               ))
             )
@@ -68,19 +71,26 @@ const page = () => {
   ) 
   else if(isAddingBlog) return (
     <>
-      <div className="main min-h-screen w-screen absolute top-0 bg-red-400 px-5 py-48">
-        <input 
-          type="text" 
-          placeholder='enter content'
-          onChange={(e) => setContent(e.target.value)}
-        />
-        <input 
-          type="text" 
-          placeholder='enter title'
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      <button onClick={handleAddPost}>Test</button>
-      <button onClick={handleAddingBlog}>Done adding</button>
+      <div className="main min-h-screen flex justify-center w-screen absolute top-0 bg-black px-5 lg:pt-32 lg:px-20 py-28">
+        <div className="blogPost lg:w-[70%] w-[85%] p-2">
+          <input 
+            type="text" 
+            placeholder='Enter Title'
+            className='border-b focus:outline-none block placeholder-white/55 text-white text-5xl w-full bg-black my-2'
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <textarea
+           onChange={(e) => setContent(e.target.value)} 
+           name="" 
+           id="" 
+           placeholder='Enter the content (HTML tags do work) here...'
+           className='w-full min-h-[60%] lg:min-h-[100%] p-2 text-xl bg-white/40'
+          />
+          <button className='bg-green-500 text-white lg:absolute top-0 right-0 mr-10 my-32 px-3 py-1' onClick={handleAddPost}>Add Blog</button>
+        </div>
+        
+      {/* <button onClick={handleAddPost}>Test</button> */}
+      <button className='text-white absolute top-0 right-0 mt-20 mr-10 bg-blue-500 px-3 py-1' onClick={handleAddingBlog}>Your Blogs</button>
       </div>
     </>
   )
