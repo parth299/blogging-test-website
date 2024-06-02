@@ -42,7 +42,14 @@ export async function POST(request){
                 }, {status: 404})  
             }
             
-        
+            const newBlog = {
+                title,
+                content,
+                createdAt: new Date()
+            }
+
+            await user.blogs.push(newBlog);
+            await user.save();
             
             return NextResponse.json({
                 success: true,
