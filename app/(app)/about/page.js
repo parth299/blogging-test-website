@@ -1,6 +1,6 @@
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
     <div className="absolute bg-gradient-to-r from-black to-zinc-800 h-screen top-0 z-0 w-screen flex justify-center items-center text-white/35">
       <div className="main w-[50%] hover:cursor-default">
@@ -11,4 +11,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

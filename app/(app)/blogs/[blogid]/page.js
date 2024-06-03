@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import axios from 'axios'
 
-const page = () => {
+const Page = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const {blogid} = useParams();
@@ -35,4 +35,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

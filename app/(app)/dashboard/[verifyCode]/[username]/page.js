@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation'
 import axios from 'axios'
 import BlogCard from '@/app/components/BlogCard'
 
-const page = () => {
+const Page = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState(""); 
   const {verifyCode, username} = useParams();
@@ -119,4 +119,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

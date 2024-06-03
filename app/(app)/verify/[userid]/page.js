@@ -1,10 +1,10 @@
 'use client'
-import React, { useId, useState } from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import axios from 'axios';
 
-function page() {
+function Page() {
   const{userid} = useParams();
   const [otp, setOtp] = useState("");
   const router = useRouter();
@@ -44,4 +44,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

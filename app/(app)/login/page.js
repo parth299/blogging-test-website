@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Link from 'next/link';
 
-function route() {
+function Route() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -63,4 +63,4 @@ function route() {
   )
 }
 
-export default route
+export default Route

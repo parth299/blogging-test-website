@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import BlogCard from '@/app/components/BlogCard';
 
-function page() {
+function Page() {
   const [blogs, setBlogs] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -58,4 +58,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
