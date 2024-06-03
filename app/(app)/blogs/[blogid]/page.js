@@ -22,12 +22,14 @@ const page = () => {
  
   return (
     <>
-      <div className=" min-h-screen w-screen flex justify-center items-center absolute top-0 text-black">This is a dynamic route : blogid {blogid}</div>
-      <div className="title">
-        {title}
-      </div>
-      <div className="content">
-        {content}
+      <div className=" min-h-screen w-screen flex justify-center lg:px-20 px-4 absolute top-0 text-black bg-black">
+
+        <div className="mainBlog text-white w-[90%] lg:w-[75%] mt-32 px-3 py-3">
+          <h1 className='text-5xl lg:text-8xl text-blue-300'>{title}</h1>
+          <hr />
+          <div className='lg:mt-14 mt-8 text-white/60 lg:text-2xl'>{content}</div>
+        </div>
+
       </div>
     </>
   )

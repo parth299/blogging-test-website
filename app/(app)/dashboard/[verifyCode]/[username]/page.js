@@ -9,7 +9,7 @@ const page = () => {
   const [content, setContent] = useState(""); 
   const {verifyCode, username} = useParams();
   const [blogs, setBlogs] = useState([]);
-  const [isAddingBlog, setIdAddingBlog] = useState(true);
+  const [isAddingBlog, setIdAddingBlog] = useState(false);
 
   const handleAddingBlog = async() => {
     setIdAddingBlog((prev) => !prev)
