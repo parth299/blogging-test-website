@@ -7,7 +7,7 @@ function BlogCard({title, content, blogid}) {
     <Link href={`/blogs/${blogid}`}>
       <div className='md:w-full w-[100%] mt-6 md:mt-3 bg-zinc-900 py-8 px-4 rounded-lg inline-block h-[110%] md:h-[100%]'>
           <h1 className='font-extrabold text-zinc-500 text-2xl'>{title}</h1>
-          <p className='pt-1 text-balance text-zinc-700'>   {content + "....."}</p>
+          <p className='pt-1 text-balance text-zinc-700'>   {content.slice(0, 100) + "....."}</p>
       </div>
     </Link>
   )

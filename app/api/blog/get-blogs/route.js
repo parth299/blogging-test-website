@@ -6,7 +6,7 @@ export async function POST(request) {
 
     const {page} = await request.json();
     const limit = 10;
-    const skip = (page - 1) * limit;
+    const skip = (page - 1)*limit;
     try {
         const blogs = await User.aggregate([
             { $unwind: '$blogs' },

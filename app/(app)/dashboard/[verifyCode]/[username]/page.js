@@ -10,14 +10,33 @@ const page = () => {
   const {verifyCode, username} = useParams();
   const [blogs, setBlogs] = useState([]);
   const [isAddingBlog, setIdAddingBlog] = useState(false);
+  const [isDeletingBlog, setIsDeletingBlog] = useState(false);
+
+  const deleteBlog = async(blogid) => {
+    setIsDeletingBlog(true)
+    // console.log(blogid)
+    axios.post('/api/blog/delete-blog', {blogid, username})
+    .then((response) => {
+      // console.log(response.data.message);
+      setIsDeletingBlog(false)
+    })
+    .then((err) => {
+      console.log("Something went wrong, could not delete blog :: ", err);
+      setIsDeletingBlog(false);
+    })
+  }
 
   const handleAddingBlog = async() => {
     setIdAddingBlog((prev) => !prev)
   }
 
-  const handleAddPost = async () => {
+  const handleAddPost = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post('/api/blog/add-post', {verifyCode, username, title, content});
+      setTitle("");
+      setContent("");
+      setIdAddingBlog(prev => !prev)
       console.log(response);
     } catch (error) {
       throw error;
@@ -34,7 +53,7 @@ const page = () => {
     } catch (error) {
       console.log("Error occured in fetching blogs :: useEffect")
     }
-  }, [])
+  }, [title, content, isDeletingBlog])
 
   if(!isAddingBlog) return (
     <main className='min-h-screen py-28 w-screen bg-black absolute flex justify-center top-0'>
@@ -57,6 +76,9 @@ const page = () => {
             (
               blogs.map((blog) => (
                 <div className='lg:my-3' key={blog.createdAt}>
+                  <div className='text-right relative top-6'>
+                    <button onClick={() => deleteBlog(blog._id)} className='border px-2 py-1 rounded-lg'>delete</button>
+                  </div>
                   <BlogCard blogid={blog._id} title={blog.title} content={blog.content} />
                 </div>
               ))
@@ -81,12 +103,13 @@ const page = () => {
           />
           <textarea
            onChange={(e) => setContent(e.target.value)} 
+           onSubmit={(e) => setTitle("")}
            name="" 
            id="" 
            placeholder='Enter the content (HTML tags do work) here...'
            className='w-full min-h-[60%] lg:min-h-[100%] p-2 text-xl bg-white/40'
           />
-          <button className='bg-green-500 text-white lg:absolute top-0 right-0 mr-10 my-32 px-3 py-1' onClick={handleAddPost}>Add Blog</button>
+          <button type='submit' className='bg-green-500 text-white lg:absolute top-0 right-0 mr-10 my-32 px-3 py-1' onClick={handleAddPost}>Add Blog</button>
         </div>
         
       {/* <button onClick={handleAddPost}>Test</button> */}

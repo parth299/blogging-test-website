@@ -6,32 +6,51 @@ import BlogCard from '@/app/components/BlogCard';
 function page() {
   const [blogs, setBlogs] = useState([]);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  const handleScroll = () => {
+    if (window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.scrollHeight && !loading) {
+      setPage(prevPage => prevPage + 1);
+    }
+  };
+
 
   useEffect(() => {
+    setLoading(true);
     axios.post('/api/blog/get-blogs', {page})
     .then((response) => {
       console.log(response)
-      setBlogs(response.data.blogs)
+      setBlogs(prevBlogs => [...prevBlogs, ...response.data.blogs])
+      setLoading(false)
     })
     .catch((err) => {
       console.log("Something went wrong :: ", err)
+      setLoading(false);
     })
-  }, [])
+  }, [page])
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [loading]);
 
 
   return (
-    <main className='min-h-screen w-screen flex justify-center absolute top-0 bg-black'>
-      <div className='w-[65%] mt-32'>
+    <main className='min-h-screen w-screen flex justify-center absolute top-0 bg-gradient-to-r from-zinc-900 to-black'>
+      <div className='w-[65%] mt-32 mb-20'>
 
-     
+     <h1 className='text-blue-300 text-4xl lg:text-6xl'>Read Blogs</h1>
+     {loading && (
+      <h1 className='text-3xl pt-20 text-green-500'>Loading Blogs .......</h1>
+     )}
       {blogs.length > 0 ? (
         blogs.map((blogitem) => (
-          <div key={blogitem.blog._id}>
+          <div className='my-5' key={blogitem.blog._id}>
             <BlogCard blogid={blogitem.blog._id} title={blogitem.blog.title} content={blogitem.blog.content} />
           </div>
         ))
       ) : (
-        <h1>No blogs found</h1>
+        null
       )}
 
       </div>

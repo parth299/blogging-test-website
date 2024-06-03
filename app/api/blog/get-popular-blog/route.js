@@ -6,24 +6,23 @@ dbConnect();
 
 export async function GET(request) {
     try {
-        const blogs = [
-            {
-                title: "NextJs: The full stack framework",
-                content: "Nextjs can be used for handling both the frontend and the backend. A simple backend can be managed easily using the api directory inside the app direectory"
-            },
-            {
-                title: "AuthJs : NextAuth changed to AuthJs",
-                content: "The next-auth company has decided to change the name of the authentication package to be authjs which is a big decision"
-            },
-            {
-                title: "The title",
-                content: "This content is only for testing and does not have any literal meaning. It is only for sake of app testing and handling backend"
+        const limit = 4;
+        const skip = 0;
+        const blogs = await User.aggregate([
+            { $unwind: '$blogs' },
+            { $sort: { 'blogs.createdAt': -1 } },
+            { $skip: skip },
+            { $limit: limit },
+            { $project: {
+                _id: 0,
+                blog: '$blogs'
+              }
             }
-        ];
+          ]);
 
         return NextResponse.json({
             message: "Popular-Blogs fetched success",
-            allBlogs: blogs
+            blogs
         }, {status: 200})
     } catch (error) {
         return NextResponse.json({error: "Cannot get the blog"}, 
