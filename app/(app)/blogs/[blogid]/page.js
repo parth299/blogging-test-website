@@ -23,7 +23,7 @@ const Page = () => {
         console.log("Something went wrong :: blogs/[blogid] page :: ", error);
         setLoading(false);
       }
-    }, 500);
+    }, 1000);
   }, [])
  
   return (
