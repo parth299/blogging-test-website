@@ -10,6 +10,14 @@ export async function POST(request) {
     try {
         const {username, email, password} = await request.json();
 
+        const user = await User.findOne({username});
+        if(user) {
+            return NextResponse.json({
+                success: false,
+                message: "User with username already exists"
+            }, {status: 404});
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10);
         //Create the verify code
         const verifyCode = String(Math.floor(Math.random()*900000 + 100000));
