@@ -36,9 +36,9 @@ export default function Home() {
               <BlogCard title={blogitem.blog.title} content={blogitem.blog.content} blogid={blogitem.blog._id} />
             </div>
           ))}
-          {blogs.length === 0 ? (
+          {/* {blogs.length === 0 ? (
             <div className="lg:text-3xl text-xl "><div>No blogs to display</div></div>
-          ) : null}
+          ) : null} */}
         </div>
       </div>
       {/* Latest Blogs ENDs */}
