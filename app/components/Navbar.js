@@ -30,7 +30,7 @@ const Navbar = () => {
               <Link className="text-white/70 lg:block" href="/"><li className={`p-4 ${pathname==='/'?"text-white" : " "}`}>CodeBlogz</li></Link>
               <Link className="hidden lg:block" href="/about"><li className={`p-4 ${pathname==='/about'?"text-white" : " "}`}>About</li></Link>
               <Link href="/blogs"><li className={`p-4 ${pathname==='/blogs'?"text-white" : " "}`}>Blogs</li></Link>
-              <Link className="hidden lg:block" href="https://parth299.github.io/My-Portfolio/" target='_blank'><li className="p-4">Portfolio</li></Link>
+              <Link className="hidden lg:block" href="/" target='_blank'><li className="p-4">Portfolio</li></Link>
               <Link className="hidden lg:block" href="/login"><li className={`p-4 ${pathname==='/login'?"text-white" : " "}`}>Login</li></Link>
             </ul>
           </div>
@@ -47,7 +47,7 @@ const Navbar = () => {
             
             <div className="p-4">
               <Link href='/login' className={`lg:hidden ${pathname==='/login'?"text-white" : " "}`}>Login</Link>
-              <Link className="hover:cursor-pointer hidden lg:block" href="https://twitter.com/parthKodes"><Image
+              <Link className="hover:cursor-pointer hidden lg:block" href="https://twitter.com"><Image
               src={twitter}
               width={18}
               height={18}
@@ -58,7 +58,7 @@ const Navbar = () => {
 
             </div>
             <div className="p-4">
-              <Link className="hover:cursor-pointer" href="https://github.com/parth299?tab=repositories"><Image
+              <Link className="hover:cursor-pointer" href="https://github.com/"><Image
               src={github}
               width={22}
               height={22}
