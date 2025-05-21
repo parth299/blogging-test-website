@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
 
     // OuterMost div
-    <div className="lg:flex justify-center bg-zinc-900 sticky shadow-2xl z-50">
+    <div className="lg:flex justify-center bg-white/10 sticky shadow-2xl z-50 m-6 rounded-3xl">
 
 
 
@@ -30,7 +30,7 @@ const Navbar = () => {
               <Link className="text-white/70 lg:block" href="/"><li className={`p-4 ${pathname==='/'?"text-white" : " "}`}>CodeBlogz</li></Link>
               <Link className="hidden lg:block" href="/about"><li className={`p-4 ${pathname==='/about'?"text-white" : " "}`}>About</li></Link>
               <Link href="/blogs"><li className={`p-4 ${pathname==='/blogs'?"text-white" : " "}`}>Blogs</li></Link>
-              <Link className="hidden lg:block" href="/" target='_blank'><li className="p-4">Portfolio</li></Link>
+              <Link className="hidden lg:block" href="https://parth299.github.io/My-Portfolio/" target='_blank'><li className="p-4">Portfolio</li></Link>
               <Link className="hidden lg:block" href="/login"><li className={`p-4 ${pathname==='/login'?"text-white" : " "}`}>Login</li></Link>
             </ul>
           </div>
@@ -58,7 +58,7 @@ const Navbar = () => {
 
             </div>
             <div className="p-4">
-              <Link className="hover:cursor-pointer" href="https://github.com/"><Image
+              <Link className="hover:cursor-pointer" href="https://github.com/parth299"><Image
               src={github}
               width={22}
               height={22}
